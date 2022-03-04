@@ -78,7 +78,7 @@ cat > /etc/xray/config.json << END
   },
   "inbounds": [
     {
-      "port": 8443,
+      "port": 443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -113,7 +113,7 @@ cat > /etc/xray/config.json << END
       }
     },
     {
-      "port": 80,
+      "port": 8880,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -149,7 +149,7 @@ cat > /etc/xray/config.json << END
       }
     },
     {
-      "port": 8443,
+      "port": 443,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -192,7 +192,7 @@ cat > /etc/xray/config.json << END
       }
     },
     {
-      "port": 80,
+      "port": 8880,
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -360,10 +360,10 @@ END
 
 # // Enable & Start Service
 # Accept port Xray
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
